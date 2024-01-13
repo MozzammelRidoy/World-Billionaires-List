@@ -49,17 +49,17 @@ function displayTableList(data, dataLimit){
                   <div class="d-flex flex-column   py-1 px-2">
                     <div class=" d-flex flex-column">
           
-                      <img src="${dataElement.squareImage}" class="card-img-top " alt="...">
+                      <img src="${dataElement.squareImage ? dataElement.squareImage : 'Image Not Found'}" class="card-img-top " alt="...">
                       <small class=><strong>Source: </strong>${dataElement.source}</small>
                     </div>
                  
                   <div class="card-body  d-flex flex-column py-1">
                    
-                    <small><strong>Rank: ${dataElement.rank} </strong></small>
-                    <small><strong>Citizenship: ${dataElement.countryOfCitizenship}</strong></small>
-                    <small><strong>City: ${dataElement.city}</strong></small>
-                    <small><strong>Tota Shares: ${dataElement.finalWorth} B</strong></small>
-                    <small><strong>Share Price: ${dataElement.privateAssetsWorth} B</strong></small>
+                    <small><strong>Rank: </strong>${dataElement.rank} </small>
+                    <small><strong>Citizenship: </strong>${dataElement.countryOfCitizenship}</small>
+                    <small><strong>City: </strong>${dataElement.city}</small>
+                    <small><strong>Tota Shares: </strong>${dataElement.finalWorth} B</small>
+                    <small><strong>Share Price: </strong>${dataElement.privateAssetsWorth} B</small>
                 
                   </div>
                   </div>
@@ -77,12 +77,21 @@ const processData = (dataLimit) => {
     toggleLoger(true);
     const searchField = document.getElementById('search-field');
     const searchValue = searchField.value ;
+    
     // console.log(searchValue);
     loadData(searchValue, dataLimit);
+    searchValue = '';
 }
 
 document.getElementById('btn-search').addEventListener('click', function(){
   processData(15);
+})
+
+document.getElementById('search-field').addEventListener('keydown', function(e){
+    // console.log(e.key);
+    if(e.key === 'Enter'){
+        processData(15);
+    }
 })
 
 

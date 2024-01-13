@@ -83,6 +83,15 @@ document.getElementById('btn-search').addEventListener('click', function(){
 
 })
 
+document.getElementById('search-field').addEventListener('keydown', function(e){
+    // console.log(e.key);
+    if(e.key === 'Enter'){
+    const searchField = document.getElementById('search-field');
+    const searchValue = searchField.value;
+    searchValue.value = ''
+    window.location.href = 'show-all-billinier.html';
+    }
+})
 
 
 loadData();
